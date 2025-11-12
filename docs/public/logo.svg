@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Tree trunk -->
+  <rect x="45" y="60" width="10" height="25" fill="#8B4513"/>
+
+  <!-- Tree branches/nodes structure -->
+  <circle cx="50" cy="55" r="6" fill="#2c3e50"/>
+  <line x1="50" y1="55" x2="35" y2="40" stroke="#2c3e50" stroke-width="2"/>
+  <line x1="50" y1="55" x2="65" y2="40" stroke="#2c3e50" stroke-width="2"/>
+
+  <!-- Left branch -->
+  <circle cx="35" cy="40" r="5" fill="#3498db"/>
+  <line x1="35" y1="40" x2="25" y2="28" stroke="#3498db" stroke-width="1.5"/>
+  <line x1="35" y1="40" x2="40" y2="28" stroke="#3498db" stroke-width="1.5"/>
+  <circle cx="25" cy="28" r="4" fill="#27ae60"/>
+  <circle cx="40" cy="28" r="4" fill="#27ae60"/>
+
+  <!-- Right branch -->
+  <circle cx="65" cy="40" r="5" fill="#3498db"/>
+  <line x1="65" y1="40" x2="60" y2="28" stroke="#3498db" stroke-width="1.5"/>
+  <line x1="65" y1="40" x2="75" y2="28" stroke="#3498db" stroke-width="1.5"/>
+  <circle cx="60" cy="28" r="4" fill="#27ae60"/>
+  <circle cx="75" cy="28" r="4" fill="#27ae60"/>
+
+  <!-- AST text -->
+  <text x="50" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50" text-anchor="middle">AST</text>
+</svg>

@@ -4,3 +4,4 @@ dist
 coverage
 # ANTLR Generated Code
 packages/javascript/src/generated
+.vercel
