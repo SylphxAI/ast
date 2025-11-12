@@ -5,8 +5,9 @@
 **Type-safe AST parsing for JavaScript with extensible architecture**
 
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/SylphxAI/ast/blob/main/LICENSE)
-[![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff?style=flat-square&logo=pnpm)](https://pnpm.io/)
+[![bun](https://img.shields.io/badge/bun-%23000000.svg?style=flat-square&logo=bun&logoColor=white)](https://bun.sh)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![biome](https://img.shields.io/badge/biome-1.9.4%20-darkred?style=flat-square&logo=biome)](https://biomejs.dev/)
 
 **ANTLR-powered** • **Type-safe** • **Extensible** • **Monorepo**
 
