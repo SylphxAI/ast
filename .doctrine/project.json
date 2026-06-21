@@ -4,7 +4,7 @@
     "repo": "SylphxAI/ast",
     "name": "SylphxAI AST",
     "lifecycle": "active",
-    "layer": "library",
+    "layer": "foundation",
     "summary": "TypeScript monorepo for AST parsing tools, starting with JavaScript parsing through ANTLR and shared core AST interfaces.",
     "goals": [
       "Provide shared AST core interfaces through @sylphlab/ast-core.",
@@ -110,11 +110,11 @@
     }
   },
   "delivery": {
-    "ciModel": "github-actions-reusable-release-on-main",
+    "ciModel": "legacy-ci",
     "requiredContexts": [],
     "deployPath": "Main-branch Release workflow delegates to SylphxAI/.github reusable release workflow; docs/DEPLOYMENT.md documents Vercel deployment for the documentation site.",
     "productionProof": "bun run validate, successful package build/tests, successful release workflow for package changes, and documentation deployment/readback for docs changes.",
-    "recoveryClass": "source-revertable-with-package-forward-fix"
+    "recoveryClass": "forward-fix-only"
   },
   "adoption": {
     "status": "baseline",

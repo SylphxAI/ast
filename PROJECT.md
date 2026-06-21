@@ -5,7 +5,7 @@ SylphxAI/ast is a TypeScript monorepo for AST parsing tools, starting with JavaS
 ## Lifecycle
 
 - State: `active`
-- Layer: `library`
+- Layer: `foundation`
 - Machine manifest: [`.doctrine/project.json`](./.doctrine/project.json)
 
 ## Goals
