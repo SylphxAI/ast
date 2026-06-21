@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "repo": "SylphxAI/ast",
+    "name": "SylphxAI AST",
+    "lifecycle": "active",
+    "layer": "foundation",
+    "summary": "TypeScript monorepo for AST parsing tools, starting with JavaScript parsing through ANTLR and shared core AST interfaces.",
+    "goals": [
+      "Provide shared AST core interfaces through @sylphlab/ast-core.",
+      "Provide JavaScript parsing through @sylphlab/ast-javascript using ANTLR-generated parser code.",
+      "Maintain package documentation and a VitePress documentation site for the AST toolkit."
+    ],
+    "nonGoals": [
+      "Own downstream code transformation products or application-specific refactors.",
+      "Own parser implementations for every language until those packages are explicitly added here.",
+      "Own enterprise engineering doctrine, standards, or project manifest schema."
+    ]
+  },
+  "boundaries": {
+    "owns": [
+      {
+        "name": "ast-core-package",
+        "description": "The shared AST node interfaces and core package under packages/core."
+      },
+      {
+        "name": "javascript-parser-package",
+        "description": "The JavaScript/ECMAScript grammar, ANTLR-generated parser integration, custom AST visitor, and package contract under packages/javascript."
+      },
+      {
+        "name": "ast-documentation",
+        "description": "Repository README, generated package docs, and the VitePress documentation site under docs."
+      }
+    ],
+    "doesNotOwn": [
+      "Downstream code transformation products, application-specific refactors, or consumer runtime behavior.",
+      "Language parser packages not explicitly implemented in this repository.",
+      "Enterprise doctrine and manifest schema owned by SylphxAI/doctrine."
+    ],
+    "publicSurfaces": [
+      {
+        "type": "documentation",
+        "name": "Repository README",
+        "location": "README.md"
+      },
+      {
+        "type": "manifest",
+        "name": "Root package scripts and workspace metadata",
+        "location": "package.json"
+      },
+      {
+        "type": "package",
+        "name": "@sylphlab/ast-core",
+        "location": "packages/core/"
+      },
+      {
+        "type": "package",
+        "name": "@sylphlab/ast-javascript",
+        "location": "packages/javascript/"
+      },
+      {
+        "type": "documentation",
+        "name": "Documentation site",
+        "location": "docs/"
+      },
+      {
+        "type": "workflow",
+        "name": "Release workflow",
+        "location": ".github/workflows/release.yml"
+      }
+    ],
+    "allowedDependencies": [
+      {
+        "repo": "SylphxAI/doctrine",
+        "surface": "project manifest schema and engineering doctrine",
+        "direction": "peer-public"
+      },
+      {
+        "repo": "SylphxAI/.github",
+        "surface": "reusable release workflow",
+        "direction": "upstream-shared"
+      }
+    ],
+    "forbiddenCouplings": [
+      "Do not add product-specific code transformation behavior for a downstream application to the shared AST packages.",
+      "Do not treat the JavaScript parser package as authority for languages that are not explicitly implemented here.",
+      "Do not fork doctrine standards into this repository."
+    ]
+  },
+  "documentation": {
+    "adr": {
+      "path": "docs/adr/",
+      "status": "planned"
+    },
+    "specs": {
+      "path": "docs/guide/",
+      "status": "present"
+    },
+    "catalog": {
+      "path": ".doctrine/project.json",
+      "status": "present"
+    },
+    "runbooks": {
+      "path": "docs/DEPLOYMENT.md",
+      "status": "present"
+    },
+    "generatedReferences": {
+      "path": "docs/api/",
+      "status": "present"
+    }
+  },
+  "delivery": {
+    "ciModel": "legacy-ci",
+    "requiredContexts": [],
+    "deployPath": "Main-branch Release workflow delegates to SylphxAI/.github reusable release workflow; docs/DEPLOYMENT.md documents Vercel deployment for the documentation site.",
+    "productionProof": "bun run validate, successful package build/tests, successful release workflow for package changes, and documentation deployment/readback for docs changes.",
+    "recoveryClass": "forward-fix-only"
+  },
+  "adoption": {
+    "status": "baseline",
+    "gaps": [
+      {
+        "id": "pr-validation-workflow-missing",
+        "description": "The repository has a main-branch release workflow, but no PR validation workflow or required context is recorded for bun run validate.",
+        "owner": "SylphxAI/ast",
+        "target": "central ADR-29 required-context rollout or repo-local package validation gate"
+      },
+      {
+        "id": "parser-implementation-gap",
+        "description": "memory-bank/project_brief.md records AstBuilderVisitor implementation and grammar/position tracking as the next objective, so production lifecycle should wait for package behavior proof.",
+        "owner": "SylphxAI/ast",
+        "target": "before production lifecycle promotion"
+      },
+      {
+        "id": "tooling-doc-drift",
+        "description": "README and deployment docs reference pnpm workflows while package.json declares bun@1.3.1 and bun scripts; normalize tooling docs before enforcing package admission gates.",
+        "owner": "SylphxAI/ast",
+        "target": "next package documentation pass"
+      }
+    ]
+  }
+}
