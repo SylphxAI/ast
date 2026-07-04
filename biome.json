@@ -1,7 +1,15 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "files": {
-    "ignore": ["node_modules/", "dist/", "coverage/", "*.generated.ts"]
+    "ignore": [
+      "node_modules/",
+      ".turbo/",
+      "dist/",
+      "coverage/",
+      "*.generated.ts",
+      "packages/javascript/src/generated/",
+      ".groundatlas*/"
+    ]
   },
   "formatter": {
     "enabled": true,

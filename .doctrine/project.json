@@ -68,6 +68,26 @@
         "type": "workflow",
         "name": "Release workflow",
         "location": ".github/workflows/release.yml"
+      },
+      {
+        "type": "workflow",
+        "name": "CI workflow",
+        "location": ".github/workflows/ci.yml"
+      },
+      {
+        "type": "manifest",
+        "name": "Vendor-neutral project manifest",
+        "location": "project.manifest.json"
+      },
+      {
+        "type": "test",
+        "name": "Project-control boundary test",
+        "location": "test/project-control.node-test.mjs"
+      },
+      {
+        "type": "documentation",
+        "name": "Security policy",
+        "location": "SECURITY.md"
       }
     ],
     "allowedDependencies": [
@@ -80,6 +100,11 @@
         "repo": "SylphxAI/.github",
         "surface": "reusable release workflow",
         "direction": "upstream-shared"
+      },
+      {
+        "repo": "SylphxAI/groundatlas",
+        "surface": "Released GroundAtlas package/action for vendor-neutral project manifest validation and fleet dogfooding.",
+        "direction": "peer-public"
       }
     ],
     "forbiddenCouplings": [
@@ -91,18 +116,18 @@
   "documentation": {
     "adr": {
       "path": "docs/adr/",
-      "status": "planned"
+      "status": "present"
     },
     "specs": {
-      "path": "docs/guide/",
+      "path": "docs/specs/ and docs/guide/",
       "status": "present"
     },
     "catalog": {
-      "path": ".doctrine/project.json",
+      "path": "PROJECT.md and project.manifest.json",
       "status": "present"
     },
     "runbooks": {
-      "path": "docs/DEPLOYMENT.md",
+      "path": "AGENTS.md, docs/DEPLOYMENT.md, and SECURITY.md",
       "status": "present"
     },
     "generatedReferences": {
@@ -111,22 +136,25 @@
     }
   },
   "delivery": {
-    "ciModel": "legacy-ci",
+    "ciModel": "legacy-ci-with-groundatlas",
     "deployable": false,
-    "requiredContexts": [],
-    "deployPath": "Main-branch Release workflow delegates to SylphxAI/.github reusable release workflow; docs/DEPLOYMENT.md documents Vercel deployment for the documentation site.",
-    "productionProof": "bun run validate, successful package build/tests, successful release workflow for package changes, and documentation deployment/readback for docs changes.",
-    "recoveryClass": "forward-fix-only"
+    "requiredContexts": ["ci"],
+    "deployPath": "Pull requests and merge groups run .github/workflows/ci.yml with bun run validate and GroundAtlas package dogfood; main-branch Release workflow delegates to SylphxAI/.github reusable release workflow with caller-side id-token: write; docs/DEPLOYMENT.md documents Vercel deployment for the documentation site.",
+    "productionProof": "bun run validate, CI evidence including GroundAtlas package dogfood, successful package build/tests, successful Release workflow for package changes, npm registry readback for changed packages, and documentation deployment/readback for docs changes.",
+    "recoveryClass": "forward-fix-only",
+    "localContexts": ["ci includes bun run validate and GroundAtlas package dogfood"],
+    "packageRelease": {
+      "publishesPackages": true,
+      "ecosystems": ["npm"],
+      "releaseIntent": "The repository publishes @sylphlab/ast-core and @sylphlab/ast-javascript through the repo-local Release workflow and shared organization release workflow when changesets declare package version changes.",
+      "publisher": ".github/workflows/release.yml with inherited organization secrets, npm publish credentials, shared release workflow, and caller-side id-token: write.",
+      "requiredContexts": ["ci"],
+      "publishProof": "npm registry readback for changed @sylphlab AST package versions plus package/consumer smoke evidence when parser behavior changes."
+    }
   },
   "adoption": {
-    "status": "baseline",
+    "status": "adopted",
     "gaps": [
-      {
-        "id": "pr-validation-workflow-missing",
-        "description": "The repository has a main-branch release workflow, but no PR validation workflow or required context is recorded for bun run validate.",
-        "owner": "SylphxAI/ast",
-        "target": "central ADR-29 required-context rollout or repo-local package validation gate"
-      },
       {
         "id": "parser-implementation-gap",
         "description": "memory-bank/project_brief.md records AstBuilderVisitor implementation and grammar/position tracking as the next objective, so production lifecycle should wait for package behavior proof.",
@@ -135,7 +163,7 @@
       },
       {
         "id": "tooling-doc-drift",
-        "description": "README and deployment docs reference pnpm workflows while package.json declares bun@1.3.1 and bun scripts; normalize tooling docs before enforcing package admission gates.",
+        "description": "Core README and project-control docs now use Bun/Biome for current workflows; deployment/docs pages should still be checked in the next documentation pass for remaining stale pnpm-era wording.",
         "owner": "SylphxAI/ast",
         "target": "next package documentation pass"
       }

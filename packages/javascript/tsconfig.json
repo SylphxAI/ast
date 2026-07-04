@@ -30,7 +30,8 @@
     "declarationMap": true, // Generate sourcemaps for .d.ts files
     "sourceMap": true, // Generate .map files for JS
     "outDir": "./dist", // Specify output directory
-    "baseUrl": "." // Needed for paths mapping
+    "baseUrl": ".", // Needed for paths mapping
+    "moduleResolution": "bundler"
   },
   "include": ["src/**/*", "src/generated"], // Include src and generated code
   "exclude": ["node_modules", "dist"] // Exclude build outputs and dependencies

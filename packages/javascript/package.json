@@ -9,13 +9,12 @@
       "require": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
-    "antlr": "antlr4ts -visitor -listener -o src/generated grammar/*.g4",
+    "antlr": "antlr4ts -visitor -listener -o src/generated grammar/*.g4 && node ../../scripts/normalize-generated.mjs src/generated",
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "eslint . --cache --max-warnings=0",
     "test": "vitest run",
     "test:watch": "vitest",
