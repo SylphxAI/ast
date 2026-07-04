@@ -9,12 +9,11 @@
       "require": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "eslint . --cache --max-warnings=0",
     "clean": "rimraf dist .turbo"
   },

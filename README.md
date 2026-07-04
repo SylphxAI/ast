@@ -56,8 +56,8 @@ AST Toolkit:
 
 ### Development Experience
 
-- **Monorepo structure** - Organized with pnpm workspaces + Turborepo
-- **Modern tooling** - ESLint flat config, Prettier, Husky, commitlint
+- **Monorepo structure** - Organized with Bun workspaces + Turborepo
+- **Modern tooling** - Bun, Biome, Turborepo, and commitlint
 - **Testing** - Vitest for fast, reliable tests
 - **Build** - `tsup` for lightning-fast builds with type declarations
 - **Versioning** - Changesets for version management
@@ -105,13 +105,13 @@ AST Toolkit:
 |-----------|-----------|---------|
 | **Language** | TypeScript 5.8 | Type safety & modern JS |
 | **Parser** | ANTLR v4 | Grammar-based parsing |
-| **Monorepo** | pnpm workspaces | Dependency management |
+| **Monorepo** | Bun workspaces | Dependency management |
 | **Build** | Turborepo | Task orchestration |
 | **Bundler** | tsup | Fast ESM/CJS builds |
 | **Testing** | Vitest | Unit testing |
-| **Linting** | ESLint 9 (flat config) | Code quality |
-| **Formatting** | Prettier | Code style |
-| **Git Hooks** | Husky + lint-staged | Pre-commit checks |
+| **Linting** | Biome | Code quality |
+| **Formatting** | Biome | Code style |
+| **Git Hooks** | commitlint | Commit message checks |
 | **Versioning** | Changesets | Version management |
 
 ---
@@ -126,13 +126,13 @@ git clone https://github.com/SylphxAI/ast.git
 cd ast
 
 # Install dependencies
-pnpm install
+bun install
 
 # Build all packages
-pnpm build
+bun run build
 
 # Run tests
-pnpm test
+bun run test
 ```
 
 ### Using the Parser
@@ -213,7 +213,6 @@ ast/
 │       ├── package.json
 │       └── tsconfig.json
 ├── package.json           # Root workspace config
-├── pnpm-workspace.yaml    # pnpm workspace definition
 ├── turbo.json             # Turborepo configuration
 └── README.md
 ```
@@ -222,29 +221,29 @@ ast/
 
 ```bash
 # Development
-pnpm dev                   # Watch mode for all packages
+bun run test:watch            # Watch mode for tests
 
 # Building
-pnpm build                 # Build all packages
+bun run build                 # Build all packages
 turbo run build            # Build with Turborepo
 
 # Testing
-pnpm test                  # Run all tests
-pnpm test:watch            # Watch mode for tests
+bun run test                  # Run all tests
+bun run test:watch            # Watch mode for tests
 
 # Code Quality
-pnpm lint                  # Lint all packages
-pnpm lint:fix              # Auto-fix linting issues
-pnpm format                # Format code with Prettier
-pnpm check-format          # Check formatting
-pnpm typecheck             # TypeScript type checking
+bun run lint                  # Lint all packages
+bun run lint:fix              # Auto-fix linting issues
+bun run format                # Format code with Biome
+bun run check-format          # Check formatting
+bun run typecheck             # TypeScript type checking
 
 # Full Validation
-pnpm validate              # Run all checks (format, lint, typecheck, test)
+bun run validate              # Format/lint, generated parser freshness, typecheck, test, build
 
 # ANTLR (JavaScript package)
 cd packages/javascript
-pnpm antlr                 # Generate parser from grammar
+bun run antlr                 # Regenerate committed parser files after grammar changes
 ```
 
 ### Adding a New Language Parser
@@ -288,7 +287,7 @@ pnpm antlr                 # Generate parser from grammar
 
 ### ✅ Completed
 
-- [x] Monorepo structure with pnpm + Turborepo
+- [x] Monorepo structure with Bun + Turborepo
 - [x] Core AST type definitions (`@sylphlab/ast-core`)
 - [x] JavaScript parser package (`@sylphlab/ast-javascript`)
 - [x] ANTLR v4 integration
@@ -296,7 +295,7 @@ pnpm antlr                 # Generate parser from grammar
 - [x] Basic visitor structure
 - [x] Build system configuration
 - [x] Testing infrastructure
-- [x] Code quality tooling (ESLint, Prettier, Husky)
+- [x] Code quality tooling (Biome, commitlint)
 
 ### 🚧 In Progress
 
@@ -323,14 +322,14 @@ pnpm antlr                 # Generate parser from grammar
 
 ```bash
 # Run all tests
-pnpm test
+bun run test
 
 # Watch mode
-pnpm test:watch
+bun run test:watch
 
 # Test specific package
 cd packages/javascript
-pnpm test
+bun run test
 ```
 
 ### Test Structure
@@ -359,18 +358,9 @@ Strict mode enabled with:
 - `strictNullChecks: true`
 - `strictFunctionTypes: true`
 
-### ESLint
+### Biome
 
-Using ESLint 9 flat config format:
-```javascript
-// eslint.config.js
-export default [
-  {
-    ignores: ['**/dist/**', '**/generated/**'],
-    // ... rules
-  }
-];
-```
+Biome owns formatting and linting. The root `biome.json` is the source of truth for code style and lint behavior.
 
 ### ANTLR
 
@@ -401,7 +391,7 @@ Contributions are welcome! Please follow these guidelines:
 1. **Open an issue** - Discuss changes before implementing
 2. **Fork the repository**
 3. **Create a feature branch** - `git checkout -b feature/my-feature`
-4. **Follow code standards** - Run `pnpm validate`
+4. **Follow code standards** - Run `bun run validate`
 5. **Write tests** - Maintain high coverage
 6. **Commit with conventional commits** - `feat:`, `fix:`, `docs:`, etc.
 7. **Submit a pull request**
@@ -416,6 +406,18 @@ docs(readme): update installation instructions
 
 ---
 
+## Project Control and Release Proof
+
+This repository dogfoods [GroundAtlas](https://github.com/SylphxAI/groundatlas)
+through CI. The vendor-neutral project facts live in `project.manifest.json`;
+Sylphx-specific governance facts stay in `.doctrine/project.json`; generated
+`.groundatlas*` reports are evidence/navigation only, not source of truth.
+
+Package releases run through the shared Sylphx release workflow and are complete
+only after CI, the Release workflow, and npm registry readback for changed AST
+packages. Parser behavior changes additionally require package tests and
+consumer smoke evidence for affected parser contracts.
+
 ## 📄 License
 
 MIT © [Sylphx](https://sylphx.com)
@@ -428,7 +430,7 @@ Built with:
 - [ANTLR](https://www.antlr.org/) - Parser generator
 - [antlr4ts](https://github.com/tunnelvisionlabs/antlr4ts) - ANTLR runtime for TypeScript
 - [TypeScript](https://www.typescriptlang.org/) - Language
-- [pnpm](https://pnpm.io/) - Package manager
+- [Bun](https://bun.sh/) - Package manager and test/runtime tooling
 - [Turborepo](https://turbo.build/) - Monorepo tool
 - [Vitest](https://vitest.dev/) - Testing framework
 

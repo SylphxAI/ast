@@ -6,7 +6,8 @@ SylphxAI/ast is a TypeScript monorepo for AST parsing tools, starting with JavaS
 
 - State: `active`
 - Layer: `foundation`
-- Machine manifest: [`.doctrine/project.json`](./.doctrine/project.json)
+- Vendor-neutral project manifest: [`project.manifest.json`](./project.manifest.json)
+- Doctrine adapter manifest: [`.doctrine/project.json`](./.doctrine/project.json)
 
 ## Goals
 
@@ -31,8 +32,14 @@ This repository owns the AST package monorepo, JavaScript grammar/parser package
 - Core package: [`packages/core/`](./packages/core/)
 - JavaScript parser package: [`packages/javascript/`](./packages/javascript/)
 - Documentation site: [`docs/`](./docs/)
+- CI workflow: [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
 - Release workflow: [`.github/workflows/release.yml`](./.github/workflows/release.yml)
+- Vendor-neutral project manifest: [`project.manifest.json`](./project.manifest.json)
 
 ## Delivery
 
-The repository has a main-branch release workflow that delegates to the central SylphxAI/.github reusable release workflow. Meaningful proof is `bun run validate`, successful package build/tests, successful release workflow for package changes, and documentation deployment/readback for docs changes. This manifest slice is documentation-only and does not change package code, release behavior, or deployment configuration.
+Pull requests and merge groups run `bun run validate`, project-control boundary checks, and GroundAtlas package dogfooding in `.github/workflows/ci.yml`. The main-branch release workflow delegates to the central SylphxAI/.github reusable release workflow. Meaningful proof is `bun run validate`, CI evidence including GroundAtlas package dogfood, successful package build/tests, successful release workflow for package changes, npm registry readback for changed packages, and documentation deployment/readback for docs changes.
+
+## Project Control
+
+`project.manifest.json` is the vendor-neutral control file for GroundAtlas and external agents. `.doctrine/project.json` remains the Sylphx Doctrine adapter and local governance catalog. Generated `.groundatlas*` reports are evidence and navigation only; they are not source of truth.
