@@ -16,12 +16,13 @@ Do not add product-specific transformation behavior here. This repository owns A
 bun install --frozen-lockfile
 bun run validate
 node --test test/project-control.node-test.mjs
-npm exec --yes --package groundatlas@0.1.2 -- ga update --out .groundatlas-pilot
-npm exec --yes --package groundatlas@0.1.2 -- ga audit --out .groundatlas-pilot
-npm exec --yes --package groundatlas@0.1.2 -- ga manifest --out .groundatlas-pilot --json
-npm exec --yes --package groundatlas@0.1.2 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict --json
+npm exec --yes --package groundatlas@0.1.3 -- ga update --out .groundatlas-pilot
+npm exec --yes --package groundatlas@0.1.3 -- ga audit --out .groundatlas-pilot
+npm exec --yes --package groundatlas@0.1.3 -- ga manifest --out .groundatlas-pilot --json
+npm exec --yes --package groundatlas@0.1.3 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict --json
+npm exec --yes --package groundatlas@0.1.3 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict
 ```
 
 ## GroundAtlas Boundary
 
-`project.manifest.json` is the vendor-neutral GroundAtlas control file; `.doctrine/project.json` is the Sylphx-specific adapter and generated `.groundatlas*` reports are not SSOT. Release behavior runs through `.github/workflows/release.yml`, whose caller must grant `id-token: write` for trusted publish identity.
+`project.manifest.json` is the vendor-neutral GroundAtlas control file; `.doctrine/project.json` is the Sylphx-specific adapter and generated `.groundatlas*` files plus GroundAtlas JSON/Markdown reports are not SSOT. Release behavior runs through `.github/workflows/release.yml`, whose caller must grant `id-token: write` for trusted publish identity.
