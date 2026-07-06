@@ -14,7 +14,7 @@ permission required by the shared Sylphx release workflow for trusted npm
 publishing.
 
 The project-control surface must not make `.doctrine/project.json` a public
-default and must not make generated `.groundatlas*` reports authoritative. This
+default and must not make generated `.groundatlas*` files or GroundAtlas JSON/Markdown reports authoritative. This
 change must not alter AST package behavior, generated parser code, documentation
 deployment, or downstream code-transformation responsibilities.
 
@@ -25,7 +25,7 @@ Add:
 - a vendor-neutral `project.manifest.json`;
 - a CI workflow that runs `bun run validate`, including generated parser
   freshness, workspace typecheck, package tests, and package build;
-- a CI step using `SylphxAI/groundatlas@v0.1.2` with `groundatlas@0.1.2`;
+- a CI step using `SylphxAI/groundatlas@v0.1.3` with `groundatlas@0.1.3`;
 - assertions that GroundAtlas selects `project.manifest.json`, reports
   `.doctrine/project.json` only as an adapter, and has zero strict fleet
   warnings/blockers;
@@ -44,4 +44,4 @@ Add:
   governance catalog.
 - Release proof remains a successful main Release workflow plus npm registry
   readback for changed packages.
-- Generated `.groundatlas*` reports remain evidence/navigation only.
+- Generated `.groundatlas*` files plus GroundAtlas JSON/Markdown reports remain evidence/navigation only.
