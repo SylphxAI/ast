@@ -1,10 +1,11 @@
 // packages/javascript/src/index.ts
-import { CharStreams, CommonTokenStream } from "antlr4ts";
-import { ECMAScriptLexer } from "./generated/grammar/ECMAScriptLexer";
-import { ECMAScriptParser, ProgramContext } from "./generated/grammar/ECMAScriptParser";
+
 // Keep CstNode if we plan to transform the ParseTree later
-import type { CstNode } from "@sylphlab/ast-core";
-import { AstBuilderVisitor } from "./AstBuilderVisitor"; // Import the visitor
+import type { CstNode } from '@sylphlab/ast-core'
+import { CharStreams, CommonTokenStream } from 'antlr4ts'
+import { AstBuilderVisitor } from './AstBuilderVisitor' // Import the visitor
+import { ECMAScriptLexer } from './generated/grammar/ECMAScriptLexer'
+import { ECMAScriptParser } from './generated/grammar/ECMAScriptParser'
 
 /**
  * Parses JavaScript code using ANTLR-generated parser.
@@ -13,44 +14,44 @@ import { AstBuilderVisitor } from "./AstBuilderVisitor"; // Import the visitor
  * @returns The root node of our custom CST/AST, or null on failure.
  */
 export function parseJavaScript(text: string): CstNode | null {
-  // Return our CstNode
-  if (!text) {
-    // Handle empty input if necessary, maybe return a specific empty tree representation
-    return null;
-  }
-  console.log("Parsing JavaScript using ANTLR...");
+	// Return our CstNode
+	if (!text) {
+		// Handle empty input if necessary, maybe return a specific empty tree representation
+		return null
+	}
+	console.log('Parsing JavaScript using ANTLR...')
 
-  // Create stream from input string
-  const inputStream = CharStreams.fromString(text);
+	// Create stream from input string
+	const inputStream = CharStreams.fromString(text)
 
-  // Create Lexer
-  const lexer = new ECMAScriptLexer(inputStream);
-  // TODO: Add error listeners to lexer?
+	// Create Lexer
+	const lexer = new ECMAScriptLexer(inputStream)
+	// TODO: Add error listeners to lexer?
 
-  // Create TokenStream
-  const tokenStream = new CommonTokenStream(lexer);
+	// Create TokenStream
+	const tokenStream = new CommonTokenStream(lexer)
 
-  // Create Parser
-  const parser = new ECMAScriptParser(tokenStream);
-  // TODO: Add error listeners to parser?
-  // parser.buildParseTree = true; // Default is true
+	// Create Parser
+	const parser = new ECMAScriptParser(tokenStream)
+	// TODO: Add error listeners to parser?
+	// parser.buildParseTree = true; // Default is true
 
-  // Start parsing from the entry rule ('program' in ECMAScript.g4)
-  try {
-    const tree = parser.program(); // Get the ANTLR Parse Tree root
-    console.log("ANTLR parsing finished. Building AST...");
+	// Start parsing from the entry rule ('program' in ECMAScript.g4)
+	try {
+		const tree = parser.program() // Get the ANTLR Parse Tree root
+		console.log('ANTLR parsing finished. Building AST...')
 
-    // Create visitor instance
-    const visitor = new AstBuilderVisitor();
-    // Visit the tree to build our AST/CST
-    const astRoot = visitor.visit(tree);
+		// Create visitor instance
+		const visitor = new AstBuilderVisitor()
+		// Visit the tree to build our AST/CST
+		const astRoot = visitor.visit(tree)
 
-    console.log("AST building finished.");
-    return astRoot; // Return our AST/CST root node
-  } catch (error) {
-    console.error("Error during ANTLR parsing or AST building:", error);
-    return null; // Indicate failure
-  }
+		console.log('AST building finished.')
+		return astRoot // Return our AST/CST root node
+	} catch (error) {
+		console.error('Error during ANTLR parsing or AST building:', error)
+		return null // Indicate failure
+	}
 }
 
 // --- Remove or comment out old code ---
@@ -79,4 +80,4 @@ export const version = '0.0.0';
 */
 
 // --- Placeholder export if needed ---
-export const version = "0.0.0-antlr";
+export const version = '0.0.0-antlr'

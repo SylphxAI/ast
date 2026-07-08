@@ -1,113 +1,113 @@
 {
-  "$schema": "https://raw.githubusercontent.com/SylphxAI/groundatlas/main/schemas/project.manifest.schema.json",
-  "schemaVersion": 1,
-  "project": {
-    "id": "ast",
-    "name": "SylphxAI AST",
-    "summary": "TypeScript monorepo for shared AST core interfaces, JavaScript parsing through ANTLR, package documentation, and the AST toolkit docs site.",
-    "lifecycle": "active",
-    "visibility": "open-source",
-    "repository": "https://github.com/SylphxAI/ast",
-    "homepage": "https://github.com/SylphxAI/ast",
-    "tags": ["typescript", "ast", "parser", "antlr", "monorepo", "foundation-library"]
-  },
-  "truth": {
-    "humanProjectFile": "PROJECT.md",
-    "agentAdapter": "AGENTS.md",
-    "specs": ["docs/specs/", "docs/guide/", "README.md"],
-    "adrs": ["docs/adr/"],
-    "source": [
-      "packages/",
-      "docs/",
-      "memory-bank/",
-      "package.json",
-      "turbo.json",
-      "sylphx.json",
-      ".github/workflows/ci.yml",
-      ".github/workflows/release.yml"
-    ],
-    "tests": ["packages/", "test/project-control.node-test.mjs", ".github/workflows/ci.yml"],
-    "runbooks": ["README.md", "PROJECT.md", "docs/DEPLOYMENT.md", "SECURITY.md"]
-  },
-  "surfaces": [
-    {
-      "type": "package",
-      "name": "@sylphlab/ast-core",
-      "path": "packages/core/package.json",
-      "description": "Public package surface for shared AST node interfaces and core types."
-    },
-    {
-      "type": "package",
-      "name": "@sylphlab/ast-javascript",
-      "path": "packages/javascript/package.json",
-      "description": "Public package surface for JavaScript parsing through ANTLR-generated parser integration."
-    },
-    {
-      "type": "docs",
-      "name": "Repository README",
-      "path": "README.md",
-      "description": "Public package-family overview, architecture, development, and project-control entry point."
-    },
-    {
-      "type": "docs",
-      "name": "Documentation site",
-      "path": "docs/",
-      "description": "VitePress documentation, guides, API references, package docs, and deployment runbook."
-    },
-    {
-      "type": "workflow",
-      "name": "CI",
-      "path": ".github/workflows/ci.yml",
-      "description": "PR, merge-group, and main validation with bun validate plus GroundAtlas package dogfood."
-    },
-    {
-      "type": "workflow",
-      "name": "Release",
-      "path": ".github/workflows/release.yml",
-      "description": "Main-branch release workflow calling the shared Sylphx release workflow."
-    },
-    {
-      "type": "docs",
-      "name": "Project control plane",
-      "path": "PROJECT.md",
-      "description": "Human project identity, boundary, lifecycle, delivery, and package-proof entry point."
-    },
-    {
-      "type": "docs",
-      "name": "Doctrine adapter manifest",
-      "path": ".doctrine/project.json",
-      "description": "Sylphx Doctrine adapter and org-local governance catalog; not the vendor-neutral GroundAtlas default."
-    }
-  ],
-  "commands": [
-    {
-      "name": "install",
-      "command": "bun install --frozen-lockfile",
-      "purpose": "Install workspace dependencies without lockfile drift."
-    },
-    {
-      "name": "validate",
-      "command": "bun run validate",
-      "purpose": "Run format check, lint, generated parser freshness, typecheck, tests, and build."
-    },
-    {
-      "name": "build",
-      "command": "bun run build",
-      "purpose": "Build AST packages."
-    },
-    {
-      "name": "test:project-control",
-      "command": "node --test test/project-control.node-test.mjs",
-      "purpose": "Verify neutral manifest, Doctrine adapter, released GroundAtlas workflow, and release caller boundary."
-    },
-    {
-      "name": "groundatlas:fleet",
-      "command": "npm exec --yes --package groundatlas@0.1.3 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict --json",
-      "purpose": "Prove the vendor-neutral manifest is selected and generated GroundAtlas JSON/Markdown reports are evidence-only."
-    }
-  ],
-  "adoption": {
-    "status": "adopted",
-    "notes": "Vendor-neutral GroundAtlas manifest for package/action dogfooding. .doctrine/project.json remains the Sylphx Doctrine adapter and local governance catalog. Generated .groundatlas* files plus GroundAtlas JSON/Markdown reports are evidence/navigation only, not source of truth."
-  }
+	"$schema": "https://raw.githubusercontent.com/SylphxAI/groundatlas/main/schemas/project.manifest.schema.json",
+	"schemaVersion": 1,
+	"project": {
+		"id": "ast",
+		"name": "SylphxAI AST",
+		"summary": "TypeScript monorepo for shared AST core interfaces, JavaScript parsing through ANTLR, package documentation, and the AST toolkit docs site.",
+		"lifecycle": "active",
+		"visibility": "open-source",
+		"repository": "https://github.com/SylphxAI/ast",
+		"homepage": "https://github.com/SylphxAI/ast",
+		"tags": ["typescript", "ast", "parser", "antlr", "monorepo", "foundation-library"]
+	},
+	"truth": {
+		"humanProjectFile": "PROJECT.md",
+		"agentAdapter": "AGENTS.md",
+		"specs": ["docs/specs/", "docs/guide/", "README.md"],
+		"adrs": ["docs/adr/"],
+		"source": [
+			"packages/",
+			"docs/",
+			"memory-bank/",
+			"package.json",
+			"turbo.json",
+			"sylphx.json",
+			".github/workflows/ci.yml",
+			".github/workflows/release.yml"
+		],
+		"tests": ["packages/", "test/project-control.node-test.mjs", ".github/workflows/ci.yml"],
+		"runbooks": ["README.md", "PROJECT.md", "docs/DEPLOYMENT.md", "SECURITY.md"]
+	},
+	"surfaces": [
+		{
+			"type": "package",
+			"name": "@sylphlab/ast-core",
+			"path": "packages/core/package.json",
+			"description": "Public package surface for shared AST node interfaces and core types."
+		},
+		{
+			"type": "package",
+			"name": "@sylphlab/ast-javascript",
+			"path": "packages/javascript/package.json",
+			"description": "Public package surface for JavaScript parsing through ANTLR-generated parser integration."
+		},
+		{
+			"type": "docs",
+			"name": "Repository README",
+			"path": "README.md",
+			"description": "Public package-family overview, architecture, development, and project-control entry point."
+		},
+		{
+			"type": "docs",
+			"name": "Documentation site",
+			"path": "docs/",
+			"description": "VitePress documentation, guides, API references, package docs, and deployment runbook."
+		},
+		{
+			"type": "workflow",
+			"name": "CI",
+			"path": ".github/workflows/ci.yml",
+			"description": "PR, merge-group, and main validation with bun validate plus GroundAtlas package dogfood."
+		},
+		{
+			"type": "workflow",
+			"name": "Release",
+			"path": ".github/workflows/release.yml",
+			"description": "Main-branch release workflow calling the shared Sylphx release workflow."
+		},
+		{
+			"type": "docs",
+			"name": "Project control plane",
+			"path": "PROJECT.md",
+			"description": "Human project identity, boundary, lifecycle, delivery, and package-proof entry point."
+		},
+		{
+			"type": "docs",
+			"name": "Doctrine adapter manifest",
+			"path": ".doctrine/project.json",
+			"description": "Sylphx Doctrine adapter and org-local governance catalog; not the vendor-neutral GroundAtlas default."
+		}
+	],
+	"commands": [
+		{
+			"name": "install",
+			"command": "bun install --frozen-lockfile",
+			"purpose": "Install workspace dependencies without lockfile drift."
+		},
+		{
+			"name": "validate",
+			"command": "bun run validate",
+			"purpose": "Run format check, lint, generated parser freshness, typecheck, tests, and build."
+		},
+		{
+			"name": "build",
+			"command": "bun run build",
+			"purpose": "Build AST packages."
+		},
+		{
+			"name": "test:project-control",
+			"command": "node --test test/project-control.node-test.mjs",
+			"purpose": "Verify neutral manifest, Doctrine adapter, released GroundAtlas workflow, and release caller boundary."
+		},
+		{
+			"name": "groundatlas:fleet",
+			"command": "npm exec --yes --package groundatlas@0.1.3 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict --json",
+			"purpose": "Prove the vendor-neutral manifest is selected and generated GroundAtlas JSON/Markdown reports are evidence-only."
+		}
+	],
+	"adoption": {
+		"status": "adopted",
+		"notes": "Vendor-neutral GroundAtlas manifest for package/action dogfooding. .doctrine/project.json remains the Sylphx Doctrine adapter and local governance catalog. Generated .groundatlas* files plus GroundAtlas JSON/Markdown reports are evidence/navigation only, not source of truth."
+	}
 }

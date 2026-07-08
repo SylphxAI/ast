@@ -9,19 +9,21 @@
       "require": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "lint": "eslint . --cache --max-warnings=0",
-    "clean": "rimraf dist .turbo"
+    "clean": "rimraf dist .turbo",
+    "lint:fix": "biome check --write ."
   },
   "devDependencies": {
     "tsup": "^8.4.0",
-    "typescript": "^5.8.3",
-    "eslint": "^9.25.0",
-    "@sylphlab/eslint-config-sylph": "^3.4.0"
+    "typescript": "^7.0.2",
+    "@biomejs/biome": "^2.3.12",
+    "@sylphx/biome-config": "^0.4.1"
   },
   "publishConfig": {
     "access": "public"
