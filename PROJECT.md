@@ -14,11 +14,14 @@ SylphxAI/ast is a TypeScript monorepo for AST parsing tools, starting with JavaS
 - Provide shared AST core interfaces through `@sylphlab/ast-core`.
 - Provide JavaScript parsing through `@sylphlab/ast-javascript` using ANTLR-generated parser code.
 - Maintain package documentation and a VitePress documentation site for the AST toolkit.
+- Serve the SylphxAI MCP family as an ANTLR-backed typed parser-contract foundation through public packages, generated fixtures, and stable source-span invariants.
 
 ## Non-Goals
 
 - This repository does not own downstream code transformation products or application-specific refactors.
 - This repository does not own parser implementations for every language until those packages are explicitly added here.
+- This repository does not own MCP server runtime, transport, tool schemas, or TypeScript MCP adapters for downstream Rust-native products.
+- This repository does not replace Synth's `@sylphx/synth*` universal AST package family.
 - This repository does not own enterprise engineering doctrine.
 
 ## Boundary
@@ -32,6 +35,7 @@ This repository owns the AST package monorepo, JavaScript grammar/parser package
 - Core package: [`packages/core/`](./packages/core/)
 - JavaScript parser package: [`packages/javascript/`](./packages/javascript/)
 - Documentation site: [`docs/`](./docs/)
+- MCP family AST foundation roadmap: [`docs/roadmap/mcp-family-ast-foundation.md`](./docs/roadmap/mcp-family-ast-foundation.md)
 - CI workflow: [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
 - Release workflow: [`.github/workflows/release.yml`](./.github/workflows/release.yml)
 - Vendor-neutral project manifest: [`project.manifest.json`](./project.manifest.json)

@@ -43,6 +43,23 @@ AST Toolkit:
 
 ---
 
+## MCP Family Role
+
+AST is a foundation package for the SylphxAI MCP family, not an MCP server. It
+owns the `@sylphlab/ast-*` package line: ANTLR-backed parser contracts, typed
+node interfaces, source spans, grammar fixtures, and JavaScript-first package
+behavior.
+
+Rust-native MCP products such as Architecture Reader MCP and CodeRAG may use
+AST outputs only through public package exports, generated fixtures, or stable
+contract files. They must not import workspace internals or add a TypeScript MCP
+adapter here.
+
+See the family roadmap:
+[`docs/roadmap/mcp-family-ast-foundation.md`](./docs/roadmap/mcp-family-ast-foundation.md).
+
+---
+
 ## ⚡ Key Features
 
 ### Parser Architecture
