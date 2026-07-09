@@ -1,39 +1,39 @@
 {
-  "name": "@sylphlab/ast-javascript",
-  "version": "0.0.0",
-  "description": "JavaScript parser for SylphLab AST (using custom engine)",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "antlr": "antlr4ts -visitor -listener -o src/generated grammar/*.g4 && node ../../scripts/normalize-generated.mjs src/generated",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "clean": "rimraf dist .turbo",
-    "lint:fix": "biome check --write ."
-  },
-  "dependencies": {
-    "@sylphlab/ast-core": "workspace:*",
-    "antlr4ts": "^0.5.0-alpha.4"
-  },
-  "devDependencies": {
-    "tsup": "^8.4.0",
-    "typescript": "^7.0.2",
-    "@biomejs/biome": "^2.3.12",
-    "@sylphx/biome-config": "^0.4.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "license": "MIT"
+	"name": "@sylphlab/ast-javascript",
+	"version": "0.0.0",
+	"description": "JavaScript parser for SylphLab AST (using custom engine)",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"antlr": "antlr4ts -visitor -listener -o src/generated grammar/*.g4 && node ../../scripts/normalize-generated.mjs src/generated",
+		"build": "tsup src/index.ts --format cjs,esm --dts",
+		"dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+		"typecheck": "tsc --noEmit -p tsconfig.json",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"clean": "rimraf dist .turbo",
+		"lint:fix": "biome check --write ."
+	},
+	"dependencies": {
+		"@sylphlab/ast-core": "workspace:*",
+		"antlr4ts": "^0.5.0-alpha.4"
+	},
+	"devDependencies": {
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.3",
+		"@biomejs/biome": "^2.3.12",
+		"@sylphx/biome-config": "^0.4.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "MIT"
 }

@@ -10,11 +10,14 @@
 		"goals": [
 			"Provide shared AST core interfaces through @sylphlab/ast-core.",
 			"Provide JavaScript parsing through @sylphlab/ast-javascript using ANTLR-generated parser code.",
-			"Maintain package documentation and a VitePress documentation site for the AST toolkit."
+			"Maintain package documentation and a VitePress documentation site for the AST toolkit.",
+			"Serve the SylphxAI MCP family as an ANTLR-backed typed parser-contract foundation through public packages, generated fixtures, and stable source-span invariants."
 		],
 		"nonGoals": [
 			"Own downstream code transformation products or application-specific refactors.",
 			"Own parser implementations for every language until those packages are explicitly added here.",
+			"Own MCP server runtime, transport, tool schemas, or TypeScript MCP adapters for downstream Rust-native products.",
+			"Replace Synth's @sylphx/synth* universal AST package family.",
 			"Own enterprise engineering doctrine, standards, or project manifest schema."
 		]
 	},
@@ -65,6 +68,11 @@
 				"location": "docs/"
 			},
 			{
+				"type": "documentation",
+				"name": "MCP family AST foundation roadmap",
+				"location": "docs/roadmap/mcp-family-ast-foundation.md"
+			},
+			{
 				"type": "workflow",
 				"name": "Release workflow",
 				"location": ".github/workflows/release.yml"
@@ -105,11 +113,18 @@
 				"repo": "SylphxAI/groundatlas",
 				"surface": "Released GroundAtlas package/action for vendor-neutral project manifest validation and fleet dogfooding.",
 				"direction": "peer-public"
+			},
+			{
+				"repo": "SylphxAI/synth",
+				"surface": "Public @sylphx/synth* package family for universal AST traversal, query, parser, WASM bridge, and tooling contracts.",
+				"direction": "peer-public"
 			}
 		],
 		"forbiddenCouplings": [
 			"Do not add product-specific code transformation behavior for a downstream application to the shared AST packages.",
 			"Do not treat the JavaScript parser package as authority for languages that are not explicitly implemented here.",
+			"Do not add an MCP server or TypeScript MCP adapter here for downstream Rust-native MCP products.",
+			"Do not make AST claim ownership of Synth's @sylphx/synth* public package family.",
 			"Do not fork doctrine standards into this repository."
 		]
 	},

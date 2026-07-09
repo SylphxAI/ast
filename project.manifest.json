@@ -9,7 +9,7 @@
 		"visibility": "open-source",
 		"repository": "https://github.com/SylphxAI/ast",
 		"homepage": "https://github.com/SylphxAI/ast",
-		"tags": ["typescript", "ast", "parser", "antlr", "monorepo", "foundation-library"]
+		"tags": ["typescript", "ast", "parser", "antlr", "monorepo", "foundation-library", "mcp-family"]
 	},
 	"truth": {
 		"humanProjectFile": "PROJECT.md",
@@ -71,6 +71,12 @@
 			"name": "Project control plane",
 			"path": "PROJECT.md",
 			"description": "Human project identity, boundary, lifecycle, delivery, and package-proof entry point."
+		},
+		{
+			"type": "docs",
+			"name": "MCP family AST foundation roadmap",
+			"path": "docs/roadmap/mcp-family-ast-foundation.md",
+			"description": "Repo-local roadmap for AST as an ANTLR-backed typed parser-contract foundation for Rust-native MCP products."
 		},
 		{
 			"type": "docs",

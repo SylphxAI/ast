@@ -1,32 +1,32 @@
 {
-  "name": "@sylphlab/ast-core",
-  "version": "0.0.0",
-  "description": "Core AST interfaces and types for SylphLab parsers",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
-    "clean": "rimraf dist .turbo",
-    "lint:fix": "biome check --write ."
-  },
-  "devDependencies": {
-    "tsup": "^8.4.0",
-    "typescript": "^7.0.2",
-    "@biomejs/biome": "^2.3.12",
-    "@sylphx/biome-config": "^0.4.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "license": "MIT"
+	"name": "@sylphlab/ast-core",
+	"version": "0.0.0",
+	"description": "Core AST interfaces and types for SylphLab parsers",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup src/index.ts --format cjs,esm --dts",
+		"dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+		"typecheck": "tsc --noEmit -p tsconfig.json",
+		"clean": "rimraf dist .turbo",
+		"lint:fix": "biome check --write ."
+	},
+	"devDependencies": {
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.3",
+		"@biomejs/biome": "^2.3.12",
+		"@sylphx/biome-config": "^0.4.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "MIT"
 }
