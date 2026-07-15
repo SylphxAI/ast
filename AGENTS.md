@@ -1,28 +1,24 @@
-# Agent Instructions
+# ast — local agent notes only
 
-This repository consumes the Sylphx engineering doctrine from [SylphxAI/doctrine](https://github.com/SylphxAI/doctrine).
+Doctrine and fleet delivery law live in the **host always-on constitution**
+(`~/.grok/AGENTS.md` / Doctrine template). This file must **not** restate,
+weaken, or fork that law (including PR-vs-direct-trunk delivery).
 
-Before changing files here:
+Local truth: `PROJECT.md`, `.doctrine/project.json` when present.
 
-- Read [PROJECT.md](./PROJECT.md) and [`.doctrine/project.json`](./.doctrine/project.json) for this repository's goal, lifecycle, boundary, public surfaces, and adoption gaps.
-- Read `SylphxAI/doctrine` `AGENTS.md`, `PRINCIPLES.md`, and `ADR.md`, then load any triggered standards.
-- Keep AST package behavior generic and language-package scoped; downstream product transformations belong in consuming repositories unless promoted through an explicit shared package contract.
+## Boundary hazards
 
-Do not add product-specific transformation behavior here. This repository owns AST packages and documentation only.
+- Never commit secrets, tokens, `.env` files, or credentials.
 
-## Local Validation
+## Local commands
 
-```bash
-bun install --frozen-lockfile
-bun run validate
-node --test test/project-control.node-test.mjs
-npm exec --yes --package groundatlas@0.1.3 -- ga update --out .groundatlas-pilot
-npm exec --yes --package groundatlas@0.1.3 -- ga audit --out .groundatlas-pilot
-npm exec --yes --package groundatlas@0.1.3 -- ga manifest --out .groundatlas-pilot --json
-npm exec --yes --package groundatlas@0.1.3 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict --json
-npm exec --yes --package groundatlas@0.1.3 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict
-```
+- `bun run typecheck`
+- `bun run test`
+- `bun run lint`
+- `bun run build`
+- `bun run validate`
 
-## GroundAtlas Boundary
+## Validation notes
 
-`project.manifest.json` is the vendor-neutral GroundAtlas control file; `.doctrine/project.json` is the Sylphx-specific adapter and generated `.groundatlas*` files plus GroundAtlas JSON/Markdown reports are not SSOT. Release behavior runs through `.github/workflows/release.yml`, whose caller must grant `id-token: write` for trusted publish identity.
+- Prefer the **narrowest** affected check before full workspace runs.
+- Report layers honestly: local diff · trunk FF · deploy · prod proof (do not collapse).
