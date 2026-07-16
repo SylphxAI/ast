@@ -2,6 +2,11 @@
 
 # AST - Abstract Syntax Tree Tools 🌳
 
+<p align="center">
+  <img src="docs/banner.png" alt="ast banner" width="100%" />
+</p>
+
+
 **Type-safe AST parsing for JavaScript with extensible architecture**
 
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/SylphxAI/ast/blob/main/LICENSE)
