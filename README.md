@@ -3,9 +3,8 @@
 # AST - Abstract Syntax Tree Tools 🌳
 
 <p align="center">
-  <img src="docs/banner.png" alt="ast banner" width="100%" />
+  <img src="https://mark.sylphx.com/api/v1/banner?type=holo&theme=tokyonight&text=ast&desc=%F0%9F%8C%B3+AST+manipulation+and+code+transformation+utilities&height=200&animation=rise&credit=0" alt="ast — Sylphx Mark banner" width="100%" />
 </p>
-
 
 **Type-safe AST parsing for JavaScript with extensible architecture**
 
