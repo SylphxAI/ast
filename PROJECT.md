@@ -47,3 +47,8 @@ Pull requests and merge groups run `bun run validate`, project-control boundary 
 ## Project Control
 
 `project.manifest.json` is the vendor-neutral control file for GroundAtlas and external agents. `.doctrine/project.json` remains the Sylphx Doctrine adapter and local governance catalog. Generated `.groundatlas*` files plus GroundAtlas JSON/Markdown reports are evidence and navigation only; they are not source of truth.
+
+
+## GroundAtlas
+
+GroundAtlas package dogfood is **retired** (Control Plane ADR-0014). Do not re-add required groundatlas CI jobs.
