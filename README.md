@@ -466,3 +466,8 @@ Built with:
   <a href="https://x.com/SylphxAI">@SylphxAI</a> •
   <a href="mailto:hi@sylphx.com">hi@sylphx.com</a>
 </p>
+
+
+## GroundAtlas
+
+GroundAtlas package dogfood is **retired** (Control Plane ADR-0014). Do not re-add required groundatlas CI jobs.
