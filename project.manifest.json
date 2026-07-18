@@ -9,13 +9,27 @@
 		"visibility": "open-source",
 		"repository": "https://github.com/SylphxAI/ast",
 		"homepage": "https://github.com/SylphxAI/ast",
-		"tags": ["typescript", "ast", "parser", "antlr", "monorepo", "foundation-library", "mcp-family"]
+		"tags": [
+			"typescript",
+			"ast",
+			"parser",
+			"antlr",
+			"monorepo",
+			"foundation-library",
+			"mcp-family"
+		]
 	},
 	"truth": {
 		"humanProjectFile": "PROJECT.md",
 		"agentAdapter": "AGENTS.md",
-		"specs": ["docs/specs/", "docs/guide/", "README.md"],
-		"adrs": ["docs/adr/"],
+		"specs": [
+			"docs/specs/",
+			"docs/guide/",
+			"README.md"
+		],
+		"adrs": [
+			"docs/adr/"
+		],
 		"source": [
 			"packages/",
 			"docs/",
@@ -26,8 +40,17 @@
 			".github/workflows/ci.yml",
 			".github/workflows/release.yml"
 		],
-		"tests": ["packages/", "test/project-control.node-test.mjs", ".github/workflows/ci.yml"],
-		"runbooks": ["README.md", "PROJECT.md", "docs/DEPLOYMENT.md", "SECURITY.md"]
+		"tests": [
+			"packages/",
+			"test/project-control.node-test.mjs",
+			".github/workflows/ci.yml"
+		],
+		"runbooks": [
+			"README.md",
+			"PROJECT.md",
+			"docs/DEPLOYMENT.md",
+			"SECURITY.md"
+		]
 	},
 	"surfaces": [
 		{
@@ -58,7 +81,7 @@
 			"type": "workflow",
 			"name": "CI",
 			"path": ".github/workflows/ci.yml",
-			"description": "PR, merge-group, and main validation with bun validate plus GroundAtlas package dogfood."
+			"description": "PR, merge-group, and main validation with bun validate."
 		},
 		{
 			"type": "workflow",
@@ -104,16 +127,11 @@
 		{
 			"name": "test:project-control",
 			"command": "node --test test/project-control.node-test.mjs",
-			"purpose": "Verify neutral manifest, Doctrine adapter, released GroundAtlas workflow, and release caller boundary."
-		},
-		{
-			"name": "groundatlas:fleet",
-			"command": "npm exec --yes --package groundatlas@0.1.3 -- ga fleet . --out .groundatlas-pilot --require-atlas --strict --json",
-			"purpose": "Prove the vendor-neutral manifest is selected and generated GroundAtlas JSON/Markdown reports are evidence-only."
+			"purpose": "Verify neutral manifest, Doctrine adapter, CI gate, and release caller boundary."
 		}
 	],
 	"adoption": {
 		"status": "adopted",
-		"notes": "Vendor-neutral GroundAtlas manifest for package/action dogfooding. .doctrine/project.json remains the Sylphx Doctrine adapter and local governance catalog. Generated .groundatlas* files plus GroundAtlas JSON/Markdown reports are evidence/navigation only, not source of truth."
+		"notes": "Vendor-neutral project.manifest retained as optional metadata. GroundAtlas package dogfood retired (Control Plane ADR-0014). .doctrine/project.json remains the Sylphx Doctrine adapter and local governance catalog."
 	}
 }
