@@ -110,11 +110,6 @@
 				"direction": "upstream-shared"
 			},
 			{
-				"repo": "SylphxAI/groundatlas",
-				"surface": "Released GroundAtlas package/action for vendor-neutral project manifest validation and fleet dogfooding.",
-				"direction": "peer-public"
-			},
-			{
 				"repo": "SylphxAI/synth",
 				"surface": "Public @sylphx/synth* package family for universal AST traversal, query, parser, WASM bridge, and tooling contracts.",
 				"direction": "peer-public"
@@ -157,7 +152,7 @@
 		"deployPath": "Pull requests and merge groups run .github/workflows/ci.yml with bun run validate; main-branch Release workflow delegates to SylphxAI/.github reusable release workflow with caller-side id-token: write; docs/DEPLOYMENT.md documents Vercel deployment for the documentation site.",
 		"productionProof": "bun run validate, CI evidence, successful package build/tests, successful Release workflow for package changes, npm registry readback for changed packages, and documentation deployment/readback for docs changes.",
 		"recoveryClass": "forward-fix-only",
-		"localContexts": ["ci includes bun run validate and GroundAtlas package dogfood"],
+			"localContexts": ["ci includes bun run validate"],
 		"packageRelease": {
 			"publishesPackages": true,
 			"ecosystems": ["npm"],

@@ -3,6 +3,3 @@ node_modules
 dist
 coverage
 .vercel
-
-# GroundAtlas generated evidence/navigation reports
-.groundatlas*/
