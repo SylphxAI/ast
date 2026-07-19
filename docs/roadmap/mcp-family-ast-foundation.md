@@ -61,7 +61,7 @@ MCP server runtime out of Rust product repositories.
 - Clarify AST versus Synth ownership so implementation agents do not duplicate
   parser work or create hidden cross-repo imports.
 
-Exit gate: ADR, roadmap links, JSON validation, and project-control tests pass.
+Exit gate: ADR, roadmap links, JSON validation, and package validation pass.
 
 ### Phase 1: Package Capability Catalog
 

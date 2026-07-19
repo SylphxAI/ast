@@ -7,7 +7,6 @@
 			"!**/node_modules",
 			"!**/.turbo",
 			"!packages/javascript/src/generated",
-			"!**/.groundatlas*",
 			"!**/.vitepress/cache",
 			"!**/.vitepress/dist"
 		]

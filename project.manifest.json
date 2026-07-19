@@ -1,5 +1,4 @@
 {
-	"$schema": "https://raw.githubusercontent.com/SylphxAI/groundatlas/main/schemas/project.manifest.schema.json",
 	"schemaVersion": 1,
 	"project": {
 		"id": "ast",
@@ -9,27 +8,13 @@
 		"visibility": "open-source",
 		"repository": "https://github.com/SylphxAI/ast",
 		"homepage": "https://github.com/SylphxAI/ast",
-		"tags": [
-			"typescript",
-			"ast",
-			"parser",
-			"antlr",
-			"monorepo",
-			"foundation-library",
-			"mcp-family"
-		]
+		"tags": ["typescript", "ast", "parser", "antlr", "monorepo", "foundation-library", "mcp-family"]
 	},
 	"truth": {
 		"humanProjectFile": "PROJECT.md",
 		"agentAdapter": "AGENTS.md",
-		"specs": [
-			"docs/specs/",
-			"docs/guide/",
-			"README.md"
-		],
-		"adrs": [
-			"docs/adr/"
-		],
+		"specs": ["docs/specs/", "docs/guide/", "README.md"],
+		"adrs": ["docs/adr/"],
 		"source": [
 			"packages/",
 			"docs/",
@@ -40,17 +25,8 @@
 			".github/workflows/ci.yml",
 			".github/workflows/release.yml"
 		],
-		"tests": [
-			"packages/",
-			"test/project-control.node-test.mjs",
-			".github/workflows/ci.yml"
-		],
-		"runbooks": [
-			"README.md",
-			"PROJECT.md",
-			"docs/DEPLOYMENT.md",
-			"SECURITY.md"
-		]
+		"tests": ["packages/", ".github/workflows/ci.yml"],
+		"runbooks": ["README.md", "PROJECT.md", "docs/DEPLOYMENT.md", "SECURITY.md"]
 	},
 	"surfaces": [
 		{
@@ -69,7 +45,7 @@
 			"type": "docs",
 			"name": "Repository README",
 			"path": "README.md",
-			"description": "Public package-family overview, architecture, development, and project-control entry point."
+			"description": "Public package-family overview, architecture, and development entry point."
 		},
 		{
 			"type": "docs",
@@ -103,9 +79,9 @@
 		},
 		{
 			"type": "docs",
-			"name": "Doctrine adapter manifest",
+			"name": "Repository metadata",
 			"path": ".doctrine/project.json",
-			"description": "Sylphx Doctrine adapter and org-local governance catalog; not the vendor-neutral GroundAtlas default."
+			"description": "Repository-local lifecycle and delivery metadata."
 		}
 	],
 	"commands": [
@@ -123,15 +99,6 @@
 			"name": "build",
 			"command": "bun run build",
 			"purpose": "Build AST packages."
-		},
-		{
-			"name": "test:project-control",
-			"command": "node --test test/project-control.node-test.mjs",
-			"purpose": "Verify neutral manifest, Doctrine adapter, CI gate, and release caller boundary."
 		}
-	],
-	"adoption": {
-		"status": "adopted",
-		"notes": "Vendor-neutral project.manifest retained as optional metadata. GroundAtlas package dogfood retired (Control Plane ADR-0014). .doctrine/project.json remains the Sylphx Doctrine adapter and local governance catalog."
-	}
+	]
 }

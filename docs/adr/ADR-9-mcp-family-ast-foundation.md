@@ -65,5 +65,4 @@ behavior.
 - Roadmap added at `docs/roadmap/mcp-family-ast-foundation.md`.
 - README and PROJECT link to the roadmap.
 - JSON manifests parse.
-- Project-control test remains green.
 - `bun run validate` remains the package behavior gate.

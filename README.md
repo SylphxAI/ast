@@ -5,7 +5,6 @@
 <p align="center">
   <img src="https://mark.sylphx.com/api/v1/banner?type=holo&theme=tokyonight&text=ast&desc=%F0%9F%8C%B3+AST+manipulation+and+code+transformation+utilities&height=200&animation=rise&credit=0" alt="ast — Sylphx Mark banner" width="100%" />
 </p>
-
 **Type-safe AST parsing for JavaScript with extensible architecture**
 
 [![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/SylphxAI/ast/blob/main/LICENSE)
@@ -429,10 +428,7 @@ docs(readme): update installation instructions
 
 ## Project Control and Release Proof
 
-This repository dogfoods [GroundAtlas](https://github.com/SylphxAI/groundatlas)
-through CI. The vendor-neutral project facts live in `project.manifest.json`;
-Sylphx-specific governance facts stay in `.doctrine/project.json`; generated
-`.groundatlas*` files plus GroundAtlas JSON/Markdown reports are evidence/navigation only, not source of truth.
+Repository metadata for tools and agents lives in `project.manifest.json`.
 
 Package releases run through the shared Sylphx release workflow and are complete
 only after CI, the Release workflow, and npm registry readback for changed AST
@@ -466,8 +462,3 @@ Built with:
   <a href="https://x.com/SylphxAI">@SylphxAI</a> •
   <a href="mailto:hi@sylphx.com">hi@sylphx.com</a>
 </p>
-
-
-## GroundAtlas
-
-GroundAtlas package dogfood is **retired** (Control Plane ADR-0014). Do not re-add required groundatlas CI jobs.

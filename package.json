@@ -20,8 +20,7 @@
 		"validate": "biome check . && bun run check:generated && bun run typecheck && bun run test && bun run build",
 		"changeset": "changeset",
 		"version-packages": "changeset version",
-		"release": "echo \"Direct changeset publish is unsafe for workspace packages; use the Sylphx release workflow.\" && exit 1",
-		"test:project-control": "node --test test/project-control.node-test.mjs"
+		"release": "echo \"Direct changeset publish is unsafe for workspace packages; use the Sylphx release workflow.\" && exit 1"
 	},
 	"keywords": [
 		"ast",
