@@ -428,7 +428,7 @@ docs(readme): update installation instructions
 
 ## Project Control and Release Proof
 
-Repository metadata for tools and agents lives in `project.manifest.json`.
+Repository metadata for tools and agents lives in ``.
 
 Package releases run through the shared Sylphx release workflow and are complete
 only after CI, the Release workflow, and npm registry readback for changed AST

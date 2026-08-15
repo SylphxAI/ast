@@ -6,8 +6,8 @@ SylphxAI/ast is a TypeScript monorepo for AST parsing tools, starting with JavaS
 
 - State: `active`
 - Layer: `foundation`
-- Vendor-neutral project manifest: [`project.manifest.json`](./project.manifest.json)
-- Doctrine adapter manifest: [`.doctrine/project.json`](./.doctrine/project.json)
+- Vendor-neutral project manifest: 
+- Doctrine adapter manifest: 
 
 ## Goals
 
@@ -38,7 +38,7 @@ This repository owns the AST package monorepo, JavaScript grammar/parser package
 - MCP family AST foundation roadmap: [`docs/roadmap/mcp-family-ast-foundation.md`](./docs/roadmap/mcp-family-ast-foundation.md)
 - CI workflow: [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
 - Release workflow: [`.github/workflows/release.yml`](./.github/workflows/release.yml)
-- Vendor-neutral project manifest: [`project.manifest.json`](./project.manifest.json)
+- Vendor-neutral project manifest: 
 
 ## Delivery
 
@@ -46,4 +46,4 @@ Pull requests and merge groups run `bun run validate` in `.github/workflows/ci.y
 
 ## Project Control
 
-`project.manifest.json` records repository metadata for tools and agents.
+`` records repository metadata for tools and agents.
