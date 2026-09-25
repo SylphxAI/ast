@@ -1,3 +1,5 @@
+> **Archived — no longer maintained (2026-09-24).** This repository is read-only and has no replacement.
+
 <div align="center">
 
 # AST - Abstract Syntax Tree Tools 🌳
